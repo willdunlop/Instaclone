@@ -9,14 +9,16 @@
   </head>
 
   <body>
+    <%= render 'partials/nav' %>
 
-    <!-- Login notice alerts -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <!-- Login notice alerts -->
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <!-- pulls html data from other html files -->
-    <%= yield %>
-
+      <!-- pulls html data from other html files -->
+      <%= yield %>
+    </div>
 
   </body>
 </html>

@@ -14,8 +14,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    # @post = Post.new
-    @post = Post.new(:name => 'my post!')
+    @post = Post.new
+    # @post = Post.new(:name => 'my post!')
     @post.save
 
     @post.liked_by @user

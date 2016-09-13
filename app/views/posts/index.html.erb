@@ -7,12 +7,12 @@
 
 
     <% @posts.each do |post| %>
-        <p><%= post.user.email %></p>
+        <p><%= post.user.username %></p>
         <%= image_tag post.image, style: "width: 500px; height: auto;" %>
 
         <p><%= link_to "upvote", like_post_path(post), method: :put %>
         <%= post.votes_for.size %></p>
-        <p>Liked by:  
+        <p>Liked by:
         <% post.votes_for.voters.each do |voter| %>
         <%= "#{voter.email},  "%>
         <%end%>

@@ -14,12 +14,23 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    # @post = Post.new
+    @post = Post.new(:name => 'my post!')
+    @post.save
+
+    @post.liked_by @user
+    @post.votes_for.size # => 1
   end
 
   # GET /posts/1/edit
   def edit
   end
+
+  def upvote
+  @post = Post.find(params[:id])
+  @post.upvote_by current_user
+  redirect_to posts_path
+end
 
   # POST /posts
   # POST /posts.json

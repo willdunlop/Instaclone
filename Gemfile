@@ -18,6 +18,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 #File attachment
 gem "paperclip", "~> 5.0.0"
+#Vot/Like system
+gem 'acts_as_votable', '~> 0.10.0'
 #CSS Framework
 gem 'materialize-sass'
 # Use jquery as the JavaScript library

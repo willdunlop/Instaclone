@@ -2,7 +2,7 @@
 
 <h1>Posts</h1>
 
-<% link_to new_post_path do %>
+<%= link_to  new_post_path do %>
 <div class="newpost-button">New Post</div>
 <% end %>
 
@@ -41,16 +41,23 @@
         </div>
 
         <p>
+          <%= link_to post do %>
           <div class="edit-button">
-          <%= link_to 'Show', post %>
+            View
           </div>
-          <div class="edit-button">
-            <%= link_to 'Edit', edit_post_path(post) %>
-          </div>
+          <% end %>
 
+            <%= link_to edit_post_path(post) do %>
             <div class="edit-button">
-            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              Edit
           </div>
+          <% end %>
+
+            <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <div class="edit-button">
+              Delete
+          </div>
+          <% end %>
     </p>
 </div>
 </div>

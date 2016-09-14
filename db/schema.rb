@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20160913054200) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  # add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

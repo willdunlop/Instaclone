@@ -6,8 +6,7 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @post.user.email %>
+  <strong>User:<%= @post.user.email if @post.user %></strong>
 </p>
   <p>
   <%= image_tag @post.image %>

@@ -1,3 +1,50 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-title{
+padding: 5px;
+}
+
+.heart {
+  width: 60px;
+  height: 50px;
+  background: image-url("heart.png") no-repeat;
+  background-size: contain;
+
+}
+
+.no-heart {
+  width: 50px;
+  height: 50px;
+  background: image-url("no-heart.png") no-repeat;
+  background-size: contain;
+
+}
+
+.npb_container{
+  width: 100px;
+  height: 100px;
+}
+.newpost-button {
+  width: 100px;
+  height: 30px;
+  text-align:center;
+  background-color: #1f3b76;
+  color: #fff;
+  padding-top: 4px;
+  margin: 3px 3px 3px 3px;
+  display:block;
+
+}
+
+.edit-button {
+  width: 100px;
+  height: 30px;
+  text-align:center;
+  background-color: #87d1ee;
+  color: #fff;
+  padding-top: 4px;
+  float:left;
+  margin: 0 3px 0 3px;
+}

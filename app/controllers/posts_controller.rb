@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -15,11 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    # @post = Post.new(:name => 'my post!')
-    @post.save
 
-    @post.liked_by @user
-    @post.votes_for.size # => 1
   end
 
   # GET /posts/1/edit
@@ -35,18 +32,17 @@ end
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id if current_user
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+   @post = Post.new(post_params)
+   @post.user_id = current_user.id if current_user
+   respond_to do |format|
+     if @post.save
+       format.html { redirect_to @post, notice: 'Post was successfully created.' }
+       format.json { render :show, status: :created, location: @post }
+     else
+       format.html { render :new }
+       format.json { render json: @post.errors, status: :unprocessable_entity }
+     end
+   end
   end
 
   # PATCH/PUT /posts/1
@@ -81,6 +77,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:description, :user_id, :image)
+      params.require(:post).permit(:description, :image)
     end
 end

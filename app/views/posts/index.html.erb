@@ -2,30 +2,66 @@
 
 <h1>Posts</h1>
 
-<%= link_to 'New Post', new_post_path %>
+<% link_to new_post_path do %>
+<div class="newpost-button">New Post</div>
+<% end %>
 
+<% @posts.each do |post| %>
 
+<div class="row">
+    <div class="col s12 m7">
+        <div class="card">
+            <div class="card-image">
+                <p> <%= post.user.email if post.user %> </P>
+                <%= image_tag post.image, style: "width: 100%; height: auto; padding: 5px;" %>
+            </div>
+            <span class="card-title">
+                <%= post.description %>
+            </span>
 
-    <% @posts.each do |post| %>
-        <p><%= post.user.username %></p>
-        <%= image_tag post.image, style: "width: 500px; height: auto;" %>
+            <div class="card-action">
+                <p>
+                    <a href="#"><%= link_to "upvote", like_post_path(post), method: :put %></a>
+                    <%= post.votes_for.size %>
+                    <% if current_user.liked? post%>
+                       <div class="heart">
+                       </div>
+                     <% else %>
+                     <div class="no-heart">
+                     </div>
+                   <%end%></p>
 
-        <p><%= link_to "upvote", like_post_path(post), method: :put %>
-        <%= post.votes_for.size %></p>
-        <p>Liked by:
-        <% post.votes_for.voters.each do |voter| %>
-        <%= "#{voter.email},  "%>
-        <%end%>
+            </div>
 
+            Liked by:
+            <% post.votes_for.voters.each do |voter| %>
+            <%= "#{voter.email},  "%>
+              <%end%>
 
-        <p><%= link_to 'Show', post %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </p>
-    <% end %>
-  </body>
+        </div>
 
+        <p>
+          <div class="edit-button">
+          <%= link_to 'Show', post %>
+          </div>
+          <div class="edit-button">
+            <%= link_to 'Edit', edit_post_path(post) %>
+          </div>
+
+            <div class="edit-button">
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+    </p>
+</div>
+</div>
+
+<% end %>
+</body>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<% link_to new_post_path do %>
+<div class="newpost-button">New Post</div>
+<% end %>
+
+<p></p>
